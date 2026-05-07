@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Level 220</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="game-shell">
+    <div class="room">
+      <div class="scene" id="scene">
+        <div class="wall wall-back"></div>
+        <div class="wall wall-left"></div>
+        <div class="wall wall-right"></div>
+        <div class="floor"></div>
+        <div class="ceiling"></div>
+        <div class="light-glow"></div>
+        <div class="backdrop"></div>
+        <div class="bed-room">
+          <div class="bed-frame"></div>
+          <div class="bunk-bed top-bed">
+            <div class="mattress mattress-top"></div>
+            <div class="pillow"></div>
+          </div>
+          <div class="bunk-bed bottom-bed">
+            <div class="mattress mattress-bottom"></div>
+          </div>
+          <div class="tv-screen">
+            <div class="tv-body"></div>
+            <div class="tv-screen-face"></div>
+          </div>
+        </div>
+      </div>
+      <div class="vhs-console">
+        <div class="vhs-deck">
+          <div class="tape-chip"></div>
+          <div class="tape-label">VHS DECK</div>
+        </div>
+        <div class="tape-stack">
+          <button class="tape-button selected" data-tape="1">Tape 1</button>
+          <button class="tape-button" data-tape="2">Tape 2</button>
+          <button class="tape-button" data-tape="3">Final Tape</button>
+        </div>
+        <div class="controls">
+          <button id="playButton">Play</button>
+          <button id="stopButton" disabled>Stop</button>
+          <button id="sleepButton" disabled>Act Asleep</button>
+          <button id="resetButton">Reset</button>
+        </div>
+      </div>
+      <div class="hud-panel">
+        <div class="status-box">
+          <h2>Ritual Status</h2>
+          <div id="statusText">Choose the first tape and press Play.</div>
+        </div>
+        <div class="scent-box">
+          <h3>Dead Flower Scent</h3>
+          <div class="meter">
+            <div class="meter-bar" id="scentBar"></div>
+          </div>
+          <div id="scentLabel">Quiet</div>
+        </div>
+        <div class="info-box">
+          <h3>Notes</h3>
+          <p>Each tape plays a version of the same song. Do not interrupt it unless you want DADDY to hear you.</p>
+          <p>The final tape reveals the camera feed. Match the bed position and close your eyes before the last loop.</p>
+        </div>
+      </div>
+      <div class="camera-feed hidden" id="cameraFeed">
+        <div class="camera-frame">
+          <div class="camera-title">LIVE FEED</div>
+          <div class="camera-screen" id="cameraScreen">
+            <div class="camera-scene"></div>
+          </div>
+          <div class="camera-warning">lagged by 2s</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
