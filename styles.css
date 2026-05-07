@@ -1,14 +1,9 @@
 :root {
-  color-scheme: dark;
   --bg: #09131c;
   --wall: #0e2132;
   --accent: #8896a5;
-  --accent-strong: #f2d2c5;
   --danger: #d4595b;
   --safe: #5ec4a5;
-  --scent-low: rgba(180, 210, 220, 0.35);
-  --scent-med: rgba(220, 120, 140, 0.45);
-  --scent-high: rgba(160, 45, 75, 0.55);
 }
 
 * {
@@ -32,195 +27,38 @@ body {
   padding: 24px;
 }
 
-.room {
+.game-container {
   width: min(1080px, 100%);
   aspect-ratio: 16 / 9;
   position: relative;
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 24px;
   overflow: hidden;
-  background: linear-gradient(180deg, rgba(14, 31, 54, 0.96) 0%, rgba(3, 7, 12, 0.96) 100%);
+  background: #04080c;
   box-shadow: 0 0 80px rgba(0, 0, 0, 0.45);
-  perspective: 1400px;
 }
 
-.scene {
-  position: absolute;
-  inset: 0;
-  transform-style: preserve-3d;
-  transform: rotateX(16deg) rotateY(-12deg) translateZ(-160px);
-  transition: transform 0.25s ease;
-  will-change: transform;
-}
-
-.wall {
-  position: absolute;
-  background: rgba(9, 19, 31, 0.95);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: inset 0 0 40px rgba(15, 35, 58, 0.45);
-}
-
-.wall-back {
-  width: 82%;
-  height: 56%;
-  left: 9%;
-  top: 13%;
-  transform: translateZ(-244px);
-  border-radius: 0 0 18px 18px;
-  background: linear-gradient(180deg, #102437 0%, #061016 72%);
-}
-
-.wall-left {
-  width: 20%;
+#canvas-container {
+  width: 100%;
   height: 100%;
-  left: 0;
-  top: 0;
-  transform-origin: left;
-  transform: rotateY(90deg) translateZ(-188px);
-  background: linear-gradient(90deg, #0f2638 0%, #071018 96%);
 }
 
-.wall-right {
-  width: 20%;
+#canvas-container canvas {
+  display: block;
+  width: 100%;
   height: 100%;
-  right: 0;
-  top: 0;
-  transform-origin: right;
-  transform: rotateY(-90deg) translateZ(-188px);
-  background: linear-gradient(90deg, #08101b 0%, #0f2a41 96%);
 }
 
-.floor {
+.game-ui {
   position: absolute;
   inset: 0;
-  transform: rotateX(90deg) translateZ(142px);
-  transform-origin: top;
-  background: linear-gradient(180deg, #121b2b 0%, #081016 80%);
-  box-shadow: inset 0 20px 60px rgba(0, 0, 0, 0.45);
-}
-
-.ceiling {
-  position: absolute;
-  inset: 0;
-  transform: rotateX(-90deg) translateZ(124px);
-  transform-origin: bottom;
-  background: linear-gradient(180deg, #071116 0%, #142a3f 100%);
-}
-
-.backdrop {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 40% 20%, rgba(117, 164, 194, 0.08), transparent 22%),
-              radial-gradient(circle at 25% 60%, rgba(80, 116, 157, 0.12), transparent 18%),
-              linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.12) 100%);
   pointer-events: none;
-  transform: translateZ(-20px);
 }
 
-.light-glow {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 50% 10%, rgba(115, 170, 210, 0.18), transparent 22%);
-  pointer-events: none;
-  filter: blur(1px);
-  transform: translateZ(6px);
-}
-
-.bed-room {
-  position: absolute;
-  inset: 0;
-  transform-style: preserve-3d;
-}
-
-.bed-frame {
-  position: absolute;
-  left: 5%;
-  right: 55%;
-  top: 12%;
-  bottom: 20%;
-  border: 2px solid rgba(205, 225, 242, 0.18);
-  border-radius: 20px;
-  box-shadow: inset 0 0 40px rgba(68, 127, 166, 0.12);
-  background: linear-gradient(180deg, rgba(7, 15, 29, 0.55), rgba(8, 17, 33, 0.95));
-  transform: translateZ(110px) rotateX(4deg);
-}
-
-.bunk-bed {
-  position: absolute;
-  left: 10%;
-  width: 36%;
-  height: 38%;
-  border-left: 10px solid rgba(116, 148, 166, 0.35);
-  border-right: 6px solid rgba(116, 148, 166, 0.35);
-  border-bottom: 4px solid rgba(116, 148, 166, 0.35);
-  border-top: none;
-  box-shadow: inset 0 5px 40px rgba(0, 0, 0, 0.25);
-  transform: translateZ(140px);
-}
-
-.top-bed {
-  top: 10%;
-}
-
-.bottom-bed {
-  bottom: 8%;
-}
-
-.mattress {
-  position: absolute;
-  left: 8%;
-  right: 8%;
-  height: 26%;
-  background: linear-gradient(180deg, #3b5775 0%, #243d54 100%);
-  border-radius: 14px;
-  box-shadow: inset 0 0 22px rgba(0, 0, 0, 0.3);
-}
-
-.mattress-top {
-  top: 8%;
-}
-
-.mattress-bottom {
-  bottom: 10%;
-}
-
-.pillow {
-  position: absolute;
-  top: 12%;
-  left: 12%;
-  width: 26%;
-  height: 14%;
-  background: rgba(219, 228, 238, 0.4);
-  border-radius: 12px;
-  box-shadow: inset 0 0 12px rgba(255, 255, 255, 0.15);
-}
-
-.tv-screen {
-  position: absolute;
-  right: 10%;
-  bottom: 16%;
-  width: 24%;
-  height: 28%;
-  display: grid;
-  place-items: center;
-  transform: translateZ(146px) rotateY(-4deg);
-}
-
-.tv-body {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 35% 20%, #617b8d, #223545 40%);
-  border-radius: 20px;
-  box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.35);
-}
-
-.tv-screen-face {
-  position: absolute;
-  inset: 16% 12%;
-  background: linear-gradient(180deg, #1d2835 0%, #0d1420 100%);
-  border-radius: 10px;
-  box-shadow: inset 0 0 24px rgba(37, 122, 212, 0.25);
-  transform: translateZ(10px);
+.vhs-console,
+.hud-panel,
+.camera-feed {
+  pointer-events: auto;
 }
 
 .vhs-console {
@@ -233,6 +71,7 @@ body {
   border-radius: 24px;
   background: rgba(2, 10, 18, 0.82);
   backdrop-filter: blur(16px);
+  z-index: 10;
 }
 
 .vhs-deck {
@@ -258,6 +97,11 @@ body {
   border-radius: 4px;
 }
 
+.tape-label {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+}
+
 .tape-stack {
   display: flex;
   justify-content: space-between;
@@ -273,6 +117,7 @@ body {
   color: #dce7f1;
   background: rgba(12, 23, 34, 0.9);
   cursor: pointer;
+  font-size: 0.85rem;
   transition: transform 0.2s ease, background 0.2s ease;
 }
 
@@ -286,7 +131,6 @@ body {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
-  margin-bottom: 20px;
 }
 
 .controls button {
@@ -296,6 +140,7 @@ body {
   border-radius: 14px;
   padding: 12px 10px;
   font-weight: 700;
+  font-size: 0.9rem;
   color: #f1f6fb;
   background: #1a2a3b;
   cursor: pointer;
@@ -319,6 +164,7 @@ body {
   width: 44%;
   display: grid;
   gap: 16px;
+  z-index: 10;
 }
 
 .status-box,
@@ -339,13 +185,13 @@ body {
   color: #bfd9eb;
 }
 
-.status-box p,
-.info-box p,
 #statusText,
+.info-box p,
 #scentLabel {
   margin: 0;
   color: #cfdbe7;
   line-height: 1.5;
+  font-size: 0.9rem;
 }
 
 .meter {
@@ -354,12 +200,13 @@ body {
   background: rgba(255, 255, 255, 0.08);
   border-radius: 999px;
   overflow: hidden;
+  margin-bottom: 8px;
 }
 
 .meter-bar {
   width: 0%;
   height: 100%;
-  background: linear-gradient(90deg, #90d5d6, #f0b5c2);
+  background: linear-gradient(90deg, #7cd6c8, #92e4ff);
   border-radius: 999px;
   transition: width 0.3s ease, background 0.3s ease;
 }
@@ -370,7 +217,7 @@ body {
   top: 40%;
   width: 34%;
   transform: translateY(-50%);
-  pointer-events: none;
+  z-index: 10;
 }
 
 .camera-frame {
@@ -399,6 +246,12 @@ body {
   place-items: center;
 }
 
+#cameraCanvas {
+  width: 100%;
+  height: 100%;
+  image-rendering: pixelated;
+}
+
 .camera-screen::before {
   content: '';
   position: absolute;
@@ -407,70 +260,34 @@ body {
               linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
   background-size: 100% 12px, 12px 100%;
   pointer-events: none;
-}
-
-.camera-scene {
-  width: 80%;
-  height: 72%;
-  border-radius: 16px;
-  background: linear-gradient(180deg, rgba(50, 79, 103, 0.9), rgba(10, 18, 30, 0.95));
-  box-shadow: inset 0 0 24px rgba(118, 164, 212, 0.22);
+  z-index: 2;
 }
 
 .hidden {
   display: none;
 }
 
-@keyframes pulseWall {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-3px); }
+@keyframes pulse {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 1; }
 }
 
-.vhs-console.active .vhs-deck {
-  animation: pulseWall 2.5s ease-in-out infinite;
-}
-
-.vhs-console.active .tv-screen-face {
-  animation: pulseWall 2.5s ease-in-out infinite;
-}
-
-.room.knock .bed-frame,
-.room.knock .bunk-bed,
-.room.knock .tv-screen-face {
-  animation: shake 0.22s ease-in-out infinite;
-}
-
-@keyframes shake {
-  0% { transform: translate(0, 0); }
-  25% { transform: translate(-1.5px, 1px); }
-  50% { transform: translate(1.5px, -1px); }
-  75% { transform: translate(-1px, 1.5px); }
-  100% { transform: translate(0, 0); }
-}
-
-.room.sleeping .bed-frame,
-.room.sleeping .bunk-bed {
-  filter: hue-rotate(-5deg) brightness(1.03);
+.vhs-console.active {
+  animation: pulse 1.2s ease-in-out infinite;
 }
 
 @media (max-width: 1080px) {
-  .room {
+  .game-container {
     aspect-ratio: auto;
     min-height: 640px;
   }
 
   .vhs-console,
-  .camera-feed,
-  .hud-panel {
+  .hud-panel,
+  .camera-feed {
     position: static;
     width: 100%;
-  }
-
-  .hud-panel {
-    margin-top: 20px;
-  }
-
-  .camera-feed {
-    transform: none;
+    transform: none !important;
+    margin-bottom: 16px;
   }
 }
